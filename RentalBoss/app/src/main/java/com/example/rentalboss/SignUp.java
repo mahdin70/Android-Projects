@@ -2,12 +2,11 @@ package com.example.rentalboss;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -57,6 +56,9 @@ public class SignUp extends AppCompatActivity
                 reference.child(username).setValue(helperClass);
 
                 Toast.makeText(SignUp.this, "You have been registered to Rental Boss", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(SignUp.this, Login.class);
+                startActivity(intent);
             }
         });
 

@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity
         call_SignUp = findViewById(R.id.call_SignUp);
         logo_image = findViewById(R.id.logo_image);
         logo_text = findViewById(R.id.logo_text);
+        login_User = findViewById(R.id.login_User);
         signin_text = findViewById(R.id.signin_text);
         username_text = findViewById(R.id.username_text);
         password_text = findViewById(R.id.password_text);
@@ -49,6 +50,18 @@ public class Login extends AppCompatActivity
             {
                 Intent intent = new Intent(Login.this,SignUp.class);
                 startActivity(intent);
+            }
+        });
+        login_User.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!validateUsername() | !validatePassword()){
+                    return;
+                }
+                else
+                {
+                    isUser();
+                }
             }
         });
     }
@@ -82,18 +95,6 @@ public class Login extends AppCompatActivity
             return true;
         }
     }
-
-    public void login_User(View view){
-        if(!validateUsername() | !validatePassword())
-        {
-            return;
-        }
-        else
-        {
-            isUser();
-        }
-    }
-
     private void isUser() {
         String userEnteredUserName = username_text.getEditText().getText().toString().trim();
         String userEnteredPassword = password_text.getEditText().getText().toString().trim();
@@ -104,6 +105,7 @@ public class Login extends AppCompatActivity
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                System.out.println(6);
                 if(dataSnapshot.exists()){
 
                     username_text.setError(null);
@@ -118,6 +120,8 @@ public class Login extends AppCompatActivity
                         String emailfromDB = dataSnapshot.child(userEnteredUserName).child("email").getValue(String.class);
                         String phoneNofromDB = dataSnapshot.child(userEnteredUserName).child("phoneNo").getValue(String.class);
                         String usernamefromDB = dataSnapshot.child(userEnteredUserName).child("username").getValue(String.class);
+
+
 
                         Intent intent = new Intent(getApplicationContext(),UserProfile.class);
                         intent.putExtra("name",namefromDB);
@@ -138,10 +142,8 @@ public class Login extends AppCompatActivity
                     username_text.requestFocus();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }

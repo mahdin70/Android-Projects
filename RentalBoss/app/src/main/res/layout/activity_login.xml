@@ -90,8 +90,7 @@
             android:elevation="0dp"/>
 
         <Button
-            android:id="@+id/button_text"
-            android:onClick="login_User"
+            android:id="@+id/login_User"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:textSize="16sp"

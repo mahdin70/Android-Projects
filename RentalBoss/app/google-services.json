@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "311043777796",
+    "firebase_url": "https://rental-boss-default-rtdb.firebaseio.com",
     "project_id": "rental-boss",
     "storage_bucket": "rental-boss.appspot.com"
   },

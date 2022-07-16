@@ -249,13 +249,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/rounded_corner"
             android:fontFamily="@font/allerta"
+            android:onClick="update"
             android:text="Update"
             android:textColor="#0B0909"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>
